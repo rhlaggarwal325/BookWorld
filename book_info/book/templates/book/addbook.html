@@ -1,0 +1,11 @@
+{% extends 'book/base.html' %}
+
+{% block body_content %}
+    <h3 class="h3"> Input Book Here : </h3>
+    <hr>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Enter">
+    </form>
+{% endblock body_content %}

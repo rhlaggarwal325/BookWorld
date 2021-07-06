@@ -1,0 +1,68 @@
+{% extends 'book/base.html' %}
+
+{% block body_content %}
+    <h3> Find your book here ! </h3>
+    <hr>
+    <div class="row">
+        <div class="col-sm-4">
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{ form }}
+                <input type="submit" value="Go">
+            </form>
+        </div>
+        <div class="col-sm-8">
+            {% if frst %}
+                <table class="table">
+                    <thead>
+                        <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Author</th>
+                        <th scope="col">Genre</th>
+                        <th scope="col">Language</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for book in books %}
+                            <tr>
+                                <td>{{ book.name }}</td>
+                                <td>{{ book.author }}</td>
+                                <td>{{ book.genre }}</td>
+                                <td>{{ book.language }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% endif %}
+
+            {% if result %}
+                <table class="table">
+                    <thead>
+                        <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Author</th>
+                        <th scope="col">Genre</th>
+                        <th scope="col">Language</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for book in books %}
+                            <tr>
+                                <td>{{ book.name }}</td>
+                                <td>{{ book.author }}</td>
+                                <td>{{ book.genre }}</td>
+                                <td>{{ book.language }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                        
+            {% else %}
+                {% if not frst %}
+                    <h5 class="mt-3"> No Books Found</h5>
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock body_content %}
